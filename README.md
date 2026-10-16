@@ -1,46 +1,30 @@
-# Astro Starter Kit: Basics
+# Generación de sitios estáticos con Astro
 
-```sh
-npm create astro@latest -- --template basics
-```
+Rehaz con Astro el catálogo de especies endémicas que construiste con Web
+Components. En este caso desaparece el panel de detalle y cada especie
+tendrá su propia página, con su propia URL (/especies/drago/,
+/especies/til/ ...). Astro generará esas páginas automáticamente a partir
+de los datos.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+1. Crea un proyecto Astro vacío y añade los datos en src/data/especies.js.
+2. Crea el layout base, BaseLayout. astro, con la cabecera, el pie y un
+   <slot /> para el contenido de cada página. Cada página tendrá un
+   título diferente: pásalo con una prop.
+3. Crea el componente BadgeAmenaza.astro, que recibe el nivel de
+   amenaza como prop y muestra su etiqueta con el color correspondiente.
+4. En la página index, importa los datos en el frontmatter y muestra una
+   lista con las especies recorriéndolas con map en la plantilla.
+5. Crea un componente genérico Tarjeta.astro, que no sepa nada de
+   especies. Usa slots con nombre (icono, título) con contenido por
+   defecto, y un slot por defecto para el resto.
+6. Crea el componente EspecieCard.astro, que usa Tarjeta y
+   BadgeAmenaza para mostrar una especie. Sustituye la lista de index
+   por una rejilla de tarjetas.
+7. Crea una página por especie con la ruta dinámica `especies/[id].astro` y
+   getStaticPaths. Enlaza cada tarjeta con
+   su página.
+8. Añade un camino de navegación ("Catálogo > nombre de la especie") en
+   la cabecera de las fichas mediante un slot con nombre en el layout.
+   Muestra los datos de la ficha (isla, habitat, altura) con un componente
+   Chip.astro que use el slot por defecto.
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
