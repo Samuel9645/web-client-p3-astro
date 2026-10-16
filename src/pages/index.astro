@@ -1,25 +1,17 @@
 ---
-import "../styles/global.css";
 import {SPECIES} from "../data/species.js";
 import SpeciesCard from "../components/SpeciesCard.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio Astro — Especies de Canarias</title>
-</head>
-<body>
-<h1>🌿 Catálogo de Especies Endémicas de Canarias</h1>
-<p class="subtitle">Ejercicio de Astro — haz clic en una especie para
-    ver el detalle</p>
+<Layout pageTitle="Ejercicio Astro — Especies de Canarias">
+    <h1>🌿 Catálogo de Especies Endémicas de Canarias</h1>
+    <p class="subtitle">Ejercicio de Astro — haz clic en una especie para
+        ver el detalle</p>
 
-<div class="catalog">
-    {SPECIES.map((species) => (
-            <SpeciesCard species={species}/>
-    ))}
-</div>
-</body>
-</html>
-
+    <div class="catalog">
+        {SPECIES.map((species) => (
+                <SpeciesCard species={species}/>
+        ))}
+    </div>
+</Layout>

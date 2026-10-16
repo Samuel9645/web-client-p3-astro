@@ -1,0 +1,35 @@
+---
+import "../styles/detail.css";
+import {SPECIES} from "../data/species.js";
+import Layout from "../layouts/Layout.astro";
+
+
+export async function getStaticPaths() {
+    return SPECIES.map((species) => ({
+        params: {species: species.name},
+        props: {species},
+    }));
+}
+
+const {species} = Astro.props;
+---
+<Layout title={species.name}>
+    <div class="detail">
+        <button class="close-button" type="button">✕ cerrar
+        </button>
+        <div class="detail-header">
+            <span class="detail-icon">{species.icon}</span>
+            <div>
+                <div class="detail-name">{species.name}</div>
+                <div class="detail-scientific">{species.scientificName}</div>
+            </div>
+        </div>
+        <p class="detail-description">{species.description}</p>
+        <div class="detail-meta">{[
+            `🏝 ${species.island}`,
+            `🌡 ${species.threatLabel}`,
+            `🌲 ${species.habitat}`,
+            `📏 ${species.height}`,
+        ].map((item) => <span class="chip">{item}</span>)}</div>
+    </div>
+</Layout>
