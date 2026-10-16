@@ -1,0 +1,17 @@
+---
+import "../styles/breadcrumb.css";
+interface Props {
+    baseRoute: string;
+    baseUrl: string;
+    currentRoute: string;
+}
+const {baseRoute, baseUrl, currentRoute} = Astro.props;
+---
+<nav class="breadcrumb" slot="header">
+    <ol class="breadcrumb-list">
+        <li>
+            <a href={baseUrl}>{baseRoute}</a>
+        </li>
+        <li class="breadcrumb-current">{currentRoute}</li>
+    </ol>
+</nav>

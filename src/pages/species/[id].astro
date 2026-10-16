@@ -4,6 +4,7 @@ import {SPECIES} from "../../data/species";
 import BaseLayout from "../../components/BaseLayout.astro";
 import ThreatBadge from "../../components/ThreatBadge.astro";
 import Chip from "../../components/Chip.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
 
 export async function getStaticPaths() {
     return SPECIES.map((species) => ({
@@ -19,6 +20,8 @@ interface Props {
 const {species} = Astro.props;
 ---
 <BaseLayout pageTitle={species.name}>
+    <Breadcrumb baseRoute="Catálogo" baseUrl="/" currentRoute={species.name}
+                slot="header"/>
     <div class="detail">
         <a href="/" class="close-button" type="button">✕ cerrar
         </a>

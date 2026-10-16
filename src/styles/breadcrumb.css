@@ -1,0 +1,52 @@
+.breadcrumb {
+    width: fit-content;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.45rem 0.75rem;
+    background: #e8f5e9;
+    border: 1px solid #c8e6c9;
+    border-radius: 999px;
+    color: #1a4a2e;
+}
+
+.breadcrumb-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    list-style: none;
+    font-size: 0.85rem;
+}
+
+.breadcrumb-list li {
+    min-width: 0;
+}
+
+.breadcrumb-list li + li::before {
+    margin-right: 0.45rem;
+    color: #5c8a6d;
+    content: "/";
+}
+
+.breadcrumb a {
+    border-radius: 4px;
+    color: #2d6a4f;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+.breadcrumb a:focus-visible {
+    outline: 2px solid #2d6a4f;
+    outline-offset: 3px;
+}
+
+.breadcrumb-current {
+    overflow-wrap: anywhere;
+    color: #1a2a3a;
+    font-weight: 700;
+}
