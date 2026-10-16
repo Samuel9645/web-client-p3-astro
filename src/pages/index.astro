@@ -1,10 +1,10 @@
 ---
-import {SPECIES} from "../data/species.js";
+import {SPECIES} from "../data/species";
 import SpeciesCard from "../components/SpeciesCard.astro";
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../components/BaseLayout.astro";
 ---
 
-<Layout pageTitle="Ejercicio Astro — Especies de Canarias">
+<BaseLayout pageTitle="Ejercicio Astro — Especies de Canarias">
     <h1>🌿 Catálogo de Especies Endémicas de Canarias</h1>
     <p class="subtitle">Ejercicio de Astro — haz clic en una especie para
         ver el detalle</p>
@@ -14,4 +14,4 @@ import Layout from "../layouts/Layout.astro";
                 <SpeciesCard species={species}/>
         ))}
     </div>
-</Layout>
+</BaseLayout>

@@ -9,7 +9,7 @@ export const SPECIES = [
         threatLabel: 'Vulnerable',
         description: 'El drago es el árbol símbolo de Canarias. Puede vivir miles de años y su savia rojiza —llamada "sangre de drago"— ha sido usada con fines medicinales desde la antigüedad. El ejemplar más famoso, el Drago Milenario de Icod de los Vinos, supera los 800 años.',
         habitat: 'Bosque termófilo',
-        height: 'hasta 20 m',
+        height: 'hasta 20 m'
     },
     {
         id: 'tajinaste',
@@ -71,4 +71,5 @@ export const SPECIES = [
         habitat: 'Matorral costero y medianías',
         height: 'hasta 4 m',
     },
-];
+] as const;
+export type Species = typeof SPECIES[number];

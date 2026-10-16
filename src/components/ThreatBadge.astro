@@ -1,0 +1,13 @@
+---
+import "../styles/threat.css";
+
+interface Props {
+    threatLevel: 'EN' | 'VU' | 'LC';
+}
+const {threatLevel} = Astro.props as Props;
+const labels = {EN: 'En peligro', VU: 'Vulnerable', LC: 'Segura'};
+---
+
+<span class={`card-threat threat-${threatLevel}`}>
+    {labels[threatLevel]}
+</span>

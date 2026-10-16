@@ -53,25 +53,3 @@ a.card {
     color: #2d6a4f;
     font-size: 0.72rem;
 }
-
-.card-threat {
-    float: right;
-    padding: 0.15rem 0.6rem;
-    border-radius: 20px;
-    font-size: 0.72rem;
-}
-
-.threat-EN {
-    background: #fce4ec;
-    color: #b71c1c;
-}
-
-.threat-VU {
-    background: #fff3e0;
-    color: #e65100;
-}
-
-.threat-LC {
-    background: #e8f5e9;
-    color: #1b5e20;
-}

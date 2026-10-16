@@ -1,8 +1,14 @@
 ---
 import "../styles/card.css";
+import ThreatBadge from "./ThreatBadge.astro";
+import type {Species} from "../data/species";
+
+interface Props {
+    species: Species
+}
 const {species} = Astro.props;
 ---
-<a href={`/${species.name}`} class="card">
+<a href={`/species/${species.id}`} class="card">
     <div class="card-icon">
         {species.icon}
     </div>
@@ -14,7 +20,6 @@ const {species} = Astro.props;
             {species.scientificName}
         </div>
         <span class="card-island">{species.island}</span>
-        <span class={`card-threat threat-${species.threat}`}
-              id="threat-badge">{species.threatLabel}</span>
+        <ThreatBadge threatLevel={species.threat}/>
     </div>
 </a>

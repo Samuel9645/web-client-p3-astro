@@ -1,0 +1,45 @@
+---
+import "../../styles/detail.css";
+import {SPECIES} from "../../data/species";
+import BaseLayout from "../../components/BaseLayout.astro";
+import ThreatBadge from "../../components/ThreatBadge.astro";
+
+
+export async function getStaticPaths() {
+    return SPECIES.map((species) => ({
+        params: {id: species.id},
+        props: {species},
+    }));
+}
+
+interface Props {
+    species: typeof SPECIES[number];
+}
+
+const {species} = Astro.props;
+---
+<BaseLayout pageTitle={species.name}>
+    <div class="detail">
+        <a href="/" class="close-button" type="button">✕ cerrar
+        </a>
+        <div class="detail-header">
+            <span class="detail-icon">{species.icon}</span>
+            <div>
+                <div class="detail-name">{species.name}</div>
+                <div class="detail-scientific">{species.scientificName}</div>
+            </div>
+        </div>
+        <p class="detail-description">{species.description}</p>
+        <div class="detail-meta">
+            {
+                [
+                    `🏝 ${species.island}`,
+                    `🌲 ${species.habitat}`,
+                    `📏 ${species.height}`,
+                ].map((item) => <span class="chip">{item}</span>)
+            }
+            <ThreatBadge threatLevel={species.threat}/>
+        </div>
+
+    </div>
+</BaseLayout>
