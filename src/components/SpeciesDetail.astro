@@ -1,0 +1,22 @@
+---
+import "styles/detail.css";
+const {species} = Astro.props;
+---
+<div class="detail">
+    <button class="close-button" type="button">✕ cerrar
+    </button>
+    <div class="detail-header">
+        <span class="detail-icon">{species.icon}</span>
+        <div>
+            <div class="detail-name">{species.name}</div>
+            <div class="detail-scientific">{species.scientificName}</div>
+        </div>
+    </div>
+    <p class="detail-description">{species.description}</p>
+    <div class="detail-meta">{[
+        `🏝 ${species.island}`,
+        `🌡 ${species.threatLabel}`,
+        `🌲 ${species.habitat}`,
+        `📏 ${species.height}`,
+    ].map((item) => <span class="chip">{item}</span>)}</div>
+</div>

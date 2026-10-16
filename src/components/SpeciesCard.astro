@@ -1,0 +1,20 @@
+---
+import "../styles/card.css";
+const {species} = Astro.props;
+---
+<a href={`/${species.name}`} class="card">
+    <div class="card-icon">
+        {species.icon}
+    </div>
+    <div class="card-body">
+        <div class="card-name">
+            {species.name}
+        </div>
+        <div class="card-scientific">
+            {species.scientificName}
+        </div>
+        <span class="card-island">{species.island}</span>
+        <span class={`card-threat threat-${species.threat}`}
+              id="threat-badge">{species.threatLabel}</span>
+    </div>
+</a>
