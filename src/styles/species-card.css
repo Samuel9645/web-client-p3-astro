@@ -1,0 +1,45 @@
+:host {
+    display: block;
+    cursor: pointer;
+}
+
+.card {
+    overflow: hidden;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.18s, box-shadow 0.18s;
+}
+
+a.card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+:host(:hover) .card {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+}
+
+
+.card-name {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.card-scientific {
+    margin: 0.1rem 0 0.5rem;
+    color: #666;
+    font-size: 0.78rem;
+    font-style: italic;
+}
+
+.card-island {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    background: #e8f5e9;
+    border-radius: 20px;
+    color: #2d6a4f;
+    font-size: 0.72rem;
+}
