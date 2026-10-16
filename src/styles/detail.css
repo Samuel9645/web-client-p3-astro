@@ -62,14 +62,6 @@
   margin-top: 0.8rem;
 }
 
-.chip {
-  padding: 0.2rem 0.7rem;
-  background: #f0f4f8;
-  border-radius: 20px;
-  color: #333;
-  font-size: 0.75rem;
-}
-
 .close-button {
   float: right;
   padding: 0.2rem 0.7rem;

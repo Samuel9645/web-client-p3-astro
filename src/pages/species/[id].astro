@@ -3,7 +3,7 @@ import "../../styles/detail.css";
 import {SPECIES} from "../../data/species";
 import BaseLayout from "../../components/BaseLayout.astro";
 import ThreatBadge from "../../components/ThreatBadge.astro";
-
+import Chip from "../../components/Chip.astro";
 
 export async function getStaticPaths() {
     return SPECIES.map((species) => ({
@@ -36,7 +36,8 @@ const {species} = Astro.props;
                     `🏝 ${species.island}`,
                     `🌲 ${species.habitat}`,
                     `📏 ${species.height}`,
-                ].map((item) => <span class="chip">{item}</span>)
+                ].map((item) =>
+                        <Chip>{item}</Chip>)
             }
             <ThreatBadge threatLevel={species.threat}/>
         </div>
