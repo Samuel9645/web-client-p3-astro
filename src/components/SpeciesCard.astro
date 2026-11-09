@@ -16,7 +16,7 @@ const {species} = Astro.props;
         <div class="card-scientific">
             {species.scientificName}
         </div>
-        <span class="card-island">{species.island}</span>
+        <span class="card-island">{species.islands.join(", ")}</span>
         <ThreatBadge threatLevel={species.threat}/>
     </Card>
 </a>

@@ -36,7 +36,7 @@ const {species} = Astro.props;
         <div class="detail-meta">
             {
                 [
-                    `🏝 ${species.island}`,
+                    `🏝 ${species.islands.join(", ")}`,
                     `🌲 ${species.habitat}`,
                     `📏 ${species.height}`,
                 ].map((item) =>
