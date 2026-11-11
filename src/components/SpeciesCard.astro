@@ -3,6 +3,7 @@ import "../styles/species-card.css";
 import ThreatBadge from "./ThreatBadge.astro";
 import type {Species} from "../data/species";
 import Card from "./Card.astro";
+import {Image} from 'astro:assets';
 
 interface Props {
     species: Species
@@ -11,7 +12,12 @@ const {species} = Astro.props;
 ---
 <a href={`/species/${species.id}`} class="card">
     <Card>
-        <span slot="icon">{species.icon}</span>
+        <Image
+                slot="icon"
+                src={species.imageMetadata}
+                alt={species.name}
+                class="card-icon"
+        />
         <div class="card-name" slot="title">{species.name}</div>
         <div class="card-scientific">
             {species.scientificName}
@@ -20,3 +26,12 @@ const {species} = Astro.props;
         <ThreatBadge threatLevel={species.threat}/>
     </Card>
 </a>
+
+<style>
+    :global(.card-icon-img) {
+        display: block;
+        margin: 0 auto; /* Centra horizontalmente */
+        max-height: 100%;
+        object-fit: contain;
+    }
+</style>

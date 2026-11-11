@@ -1,4 +1,6 @@
 import {getAllRawSpecies, type RawSpecies, type Threat} from "./api.ts";
+import type {ImageMetadata} from "astro";
+import {getImagePath} from "./images.ts";
 
 export type Species = {
     readonly id: string,
@@ -11,6 +13,7 @@ export type Species = {
     readonly description: string,
     readonly habitat: string,
     readonly height: string
+    readonly imageMetadata: ImageMetadata
 }
 const getThreatLabel = (threat: Threat): string => {
     switch (threat) {
@@ -34,7 +37,8 @@ export const rawToSpecies = (raw: RawSpecies): Species => ({
     threatLabel: getThreatLabel(raw.amenaza),
     description: raw.descripcion,
     habitat: raw.habitat,
-    height: raw.tamano
+    height: raw.tamano,
+    imageMetadata: getImagePath(raw.id)
 });
 const getSpecies = async (): Promise<Species[]> => {
     return (await getAllRawSpecies()).map(rawToSpecies);
