@@ -32,8 +32,8 @@ class SearchBar extends HTMLElement {
     connectedCallback() {
         this.searchInput.addEventListener('keydown', (event) => {
             const searchText = (event.target as HTMLInputElement).value;
-            if (event.key === 'Enter' && searchText.trim() !== '') {
-                this.emitSearchEvent(searchText);
+            if (event.key === 'Enter') {
+                this.emitSearchEvent(searchText.trim());
             }
         });
     }
