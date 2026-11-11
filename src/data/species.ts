@@ -40,7 +40,7 @@ export const rawToSpecies = (raw: RawSpecies): Species => ({
     height: raw.tamano,
     imageMetadata: getImagePath(raw.id)
 });
-const getSpecies = async (): Promise<Species[]> => {
+const getAllSpecies = async (): Promise<Species[]> => {
     return (await getAllRawSpecies()).map(rawToSpecies);
 }
-export const allSpecies = await getSpecies();
+export const allSpecies = await getAllSpecies();
