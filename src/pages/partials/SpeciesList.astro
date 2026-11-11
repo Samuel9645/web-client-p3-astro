@@ -1,0 +1,22 @@
+---
+import {getAllRawSpecies, getRawSpeciesByText} from "../../data/api.ts";
+import {rawToSpecies} from "../../data/species.ts";
+import SpeciesCard from "../../components/SpeciesCard.astro";
+export const partial = true;
+export const prerender = false;
+
+const text = Astro.url.searchParams.get("text") || "";
+
+const rawSpecies = text
+    ? await getRawSpeciesByText(text)
+    : await getAllRawSpecies();
+
+const speciesList = rawSpecies.map(rawToSpecies);
+---
+
+<div class="catalog" id="catalog">
+    {speciesList.length === 0
+        ? (<p>No se han encontrado especies que coincidan con la búsqueda.</p>)
+        : (speciesList.map(species =>
+                    <SpeciesCard species={species}/>))}
+</div>

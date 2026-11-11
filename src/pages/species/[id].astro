@@ -1,20 +1,19 @@
 ---
 import "../../styles/detail.css";
-import {SPECIES} from "../../data/species";
+import {allSpecies, type Species} from "../../data/species";
 import BaseLayout from "../../components/BaseLayout.astro";
 import ThreatBadge from "../../components/ThreatBadge.astro";
 import Chip from "../../components/Chip.astro";
 import Breadcrumb from "../../components/Breadcrumb.astro";
 
 export async function getStaticPaths() {
-    return SPECIES.map((species) => ({
-        params: {id: species.id},
-        props: {species},
+    return allSpecies.map((species) => ({
+        params: {id: species.id}, props: {species},
     }));
 }
 
 interface Props {
-    species: typeof SPECIES[number];
+    species: Species;
 }
 
 const {species} = Astro.props;
@@ -34,14 +33,12 @@ const {species} = Astro.props;
         </div>
         <p class="detail-description">{species.description}</p>
         <div class="detail-meta">
-            {
-                [
-                    `🏝 ${species.islands.join(", ")}`,
-                    `🌲 ${species.habitat}`,
-                    `📏 ${species.height}`,
-                ].map((item) =>
-                        <Chip>{item}</Chip>)
-            }
+            {[
+                `🏝 ${species.islands.join(", ")}`,
+                `🌲 ${species.habitat}`,
+                `📏 ${species.height}`,
+            ].map((item) =>
+                    <Chip>{item}</Chip>)}
             <ThreatBadge threatLevel={species.threat}/>
         </div>
 

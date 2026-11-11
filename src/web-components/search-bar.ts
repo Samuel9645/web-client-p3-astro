@@ -1,0 +1,45 @@
+const template = document.createElement('template');
+template.innerHTML = `<input type="text" placeholder="Search..." />`;
+export const searchEventName = 'species-search';
+
+export interface SearchEventDetail {
+    searchText: string;
+}
+
+declare global {
+    interface HTMLElementEventMap {
+        'species-search': CustomEvent<SearchEventDetail>;
+    }
+}
+
+class SearchBar extends HTMLElement {
+    private searchInput: HTMLInputElement;
+
+    constructor() {
+        super();
+        const shadow = this.attachShadow({mode: 'open'});
+
+        shadow.appendChild(template.content.cloneNode(true));
+        this.searchInput = shadow.querySelector('input')!;
+    }
+
+    connectedCallback() {
+        this.searchInput.addEventListener('keydown', (event) => {
+            const searchText = (event.target as HTMLInputElement).value;
+            if (event.key === 'Enter' && searchText.trim() !== '') {
+                this.emitSearchEvent(searchText);
+            }
+        });
+    }
+
+    private emitSearchEvent(searchText: string): void {
+        const searchEvent = new CustomEvent(searchEventName, {
+            detail: {searchText}, bubbles: true, composed: true,
+        });
+        this.dispatchEvent(searchEvent);
+    }
+}
+
+if (!customElements.get('search-bar')) {
+    customElements.define('search-bar', SearchBar);
+}

@@ -1,5 +1,5 @@
 ---
-import {SPECIES} from "../data/species";
+import {allSpecies} from "../data/species";
 import SpeciesCard from "../components/SpeciesCard.astro";
 import BaseLayout from "../components/BaseLayout.astro";
 
@@ -7,13 +7,27 @@ const pageTitle = "🌿 Catálogo de Especies Endémicas de Canarias";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
+    <search-bar id="search-bar"></search-bar>
     <h1>{pageTitle}</h1>
     <p class="subtitle">Ejercicio de Astro — haz clic en una especie para
         ver el detalle</p>
 
-    <div class="catalog">
-        {SPECIES.map((species) => (
-                <SpeciesCard species={species}/>
-        ))}
+    <div class="catalog" id="catalog">
+        {allSpecies.map((species) => (
+                <SpeciesCard species={species}/>))}
     </div>
 </BaseLayout>
+
+<script>
+    import "../web-components/search-bar.ts";
+    import {searchEventName} from "../web-components/search-bar.ts";
+
+    const searchBar = document.getElementById("search-bar")!;
+    searchBar.addEventListener(searchEventName, async (event) => {
+        const params = new URLSearchParams({
+            text: event.detail.searchText,
+        });
+        const response = await fetch(`/partials/SpeciesList/?${params}`);
+        document.getElementById("catalog")!.innerHTML = await response.text();
+    });
+</script>

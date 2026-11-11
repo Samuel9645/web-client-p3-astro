@@ -1,4 +1,4 @@
-import {getRawSpecies, type RawSpecies, type Threat} from "./api.ts";
+import {getAllRawSpecies, type RawSpecies, type Threat} from "./api.ts";
 
 export type Species = {
     readonly id: string,
@@ -24,7 +24,7 @@ const getThreatLabel = (threat: Threat): string => {
             return '';
     }
 }
-const rawToSpecies = (raw: RawSpecies): Species => ({
+export const rawToSpecies = (raw: RawSpecies): Species => ({
     id: raw.id,
     icon: raw.icono,
     name: raw.nombre,
@@ -37,6 +37,6 @@ const rawToSpecies = (raw: RawSpecies): Species => ({
     height: raw.tamano
 });
 const getSpecies = async (): Promise<Species[]> => {
-    return (await getRawSpecies()).map(rawToSpecies);
+    return (await getAllRawSpecies()).map(rawToSpecies);
 }
-export const SPECIES = await getSpecies();
+export const allSpecies = await getSpecies();

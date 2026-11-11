@@ -6,8 +6,7 @@ type Island = {
 export type Threat = 'EN' | 'VU' | 'LC';
 
 export type RawSpecies = {
-    readonly id: string,
-    readonly nombre: string
+    readonly id: string, readonly nombre: string
     readonly cientifico: string
     readonly icono: string
     readonly tipo: string
@@ -29,16 +28,16 @@ const queryApi = async (query: string,
     });
     const {data, errors} = await answer.json();
     if (errors) {
-        throw new Error(errors.map((e: { message: any; }) => e.message)
+        throw new Error(errors.map((e: { message: string; }) => e.message)
             .join('\n'));
     }
     return data;
 };
 
-export const getRawSpecies = async (): Promise<RawSpecies[]> => {
-    const query =
-        `query getSpecies {
-            especies {
+export const getAllRawSpecies = async (): Promise<RawSpecies[]> => {
+    // language=GraphQL
+    const query = `query getSpecies {
+        especies {
             id
             nombre
             cientifico
@@ -49,11 +48,33 @@ export const getRawSpecies = async (): Promise<RawSpecies[]> => {
             tamano
             descripcion
             islas {
-              id
-              nombre
+                id
+                nombre
             }
-          }
-        }`;
+        }
+    }`;
     return (await queryApi(query)).especies;
+}
+
+export const getRawSpeciesByText = async (text: string): Promise<RawSpecies[]> => {
+    // language=GraphQL
+    const query = `query getSpeciesByText($text: String!) {
+        buscarEspecies(texto: $text) {
+            id
+            nombre
+            cientifico
+            icono
+            tipo
+            amenaza
+            habitat
+            tamano
+            descripcion
+            islas {
+                id
+                nombre
+            }
+        }
+    }`;
+    return (await queryApi(query, {text})).buscarEspecies;
 }
 
