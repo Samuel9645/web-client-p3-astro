@@ -3,7 +3,7 @@ import styles from '../styles/search-bar.css?inline';
 const template = document.createElement('template');
 template.innerHTML = `
 <style>${styles}</style>
-<input type="text" class="search-input" placeholder="Buscar especies..."/>
+<input type="text" class="search-input" id="search-input" placeholder="Buscar especies..."/>
 `;
 export const searchEventName = 'species-search';
 
@@ -25,7 +25,8 @@ class SearchBar extends HTMLElement {
         const shadow = this.attachShadow({mode: 'open'});
 
         shadow.appendChild(template.content.cloneNode(true));
-        this.searchInput = shadow.querySelector('input')!;
+        this.searchInput =
+            shadow.getElementById('search-input')! as HTMLInputElement;
     }
 
     connectedCallback() {
