@@ -11,5 +11,9 @@
 }
 
 .card-body {
-    padding: 0.8rem 1rem 1rem;
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: flex-start;
 }
