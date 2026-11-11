@@ -5,6 +5,7 @@ import BaseLayout from "../../components/BaseLayout.astro";
 import ThreatBadge from "../../components/ThreatBadge.astro";
 import Chip from "../../components/Chip.astro";
 import Breadcrumb from "../../components/Breadcrumb.astro";
+import Image from "astro/components/Image.astro";
 
 export async function getStaticPaths() {
     return allSpecies.map((species) => ({
@@ -42,5 +43,7 @@ const {species} = Astro.props;
             <ThreatBadge threatLevel={species.threat}/>
         </div>
 
+        <Image src={species.imageMetadata} alt={species.name}
+               class="detail-image"/>
     </div>
 </BaseLayout>
