@@ -14,9 +14,7 @@ const rawSpecies = text
 const speciesList = rawSpecies.map(rawToSpecies);
 ---
 
-<div class="catalog" id="catalog">
-    {speciesList.length === 0
-        ? (<p>No se han encontrado especies que coincidan con la búsqueda.</p>)
-        : (speciesList.map(species =>
-                    <SpeciesCard species={species}/>))}
-</div>
+{speciesList.length === 0
+    ? (<p>No se han encontrado especies que coincidan con la búsqueda.</p>)
+    : (speciesList.map(species =>
+<SpeciesCard species={species}/>))}
