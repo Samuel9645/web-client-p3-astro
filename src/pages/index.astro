@@ -31,3 +31,11 @@ const pageTitle = "🌿 Catálogo de Especies Endémicas de Canarias";
         document.getElementById("catalog")!.innerHTML = await response.text();
     });
 </script>
+
+<style>
+    :global(search-bar) {
+        display: block;
+        width: min(100%, 420px);
+        margin: 0 auto 1.5rem;
+    }
+</style>

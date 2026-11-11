@@ -1,5 +1,10 @@
+import styles from '../styles/search-bar.css?inline';
+
 const template = document.createElement('template');
-template.innerHTML = `<input type="text" placeholder="Search..." />`;
+template.innerHTML = `
+<style>${styles}</style>
+<input type="text" class="search-input" placeholder="Buscar especies..."/>
+`;
 export const searchEventName = 'species-search';
 
 export interface SearchEventDetail {

@@ -1,0 +1,27 @@
+:host {
+    display: block;
+}
+
+.search-input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #1a2a3a;
+    background-color: #ffffff;
+    border: 1px solid #cfe4d3;
+    border-radius: 2rem;
+    outline: none;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.search-input::placeholder {
+    color: #6b7d75;
+}
+
+.search-input:focus {
+    border-color: #4a8f62;
+    box-shadow: 0 0 0 0.2rem rgba(74, 143, 98, 0.25);
+}
